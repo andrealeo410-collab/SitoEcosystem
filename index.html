@@ -297,6 +297,12 @@
   .work h3 { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 6px; color: var(--text); }
   .work p { font-size: 14.5px; color: var(--text-sec); line-height: 1.5; }
 
+  /* GLOSSARIO */
+  .gloss-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 48px; }
+  .gloss { padding: 24px 26px; border-radius: 20px; background: var(--surface); border: 0.5px solid var(--border); }
+  .gloss h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: var(--accent); margin-bottom: 8px; }
+  .gloss p { font-size: 15px; color: var(--text-sec); line-height: 1.55; }
+
   /* ─── IMAGE SHOWCASE (ready for real photos) ─── */
   .showcase-img {
     position: relative; width: 100%; border-radius: 24px; overflow: hidden;
@@ -483,7 +489,7 @@
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 820px) {
-    .pillars, .topics-grid, .steps, .works-grid { grid-template-columns: 1fr; }
+    .pillars, .topics-grid, .steps, .works-grid, .gloss-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 540px) {
     .wrap, .nav-inner { padding: 0 20px; }
@@ -564,6 +570,21 @@
           "@type": "Question",
           "name": "Come iniziare una collaborazione?",
           "acceptedAnswer": { "@type": "Answer", "text": "Basta una mail a infoecosystemstudio@gmail.com con una breve descrizione del prodotto e dell'idea. Si valuta insieme, senza impegno iniziale." }
+        },
+        {
+          "@type": "Question",
+          "name": "Devo già avere prodotti Apple per seguirvi?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Raccontiamo l'ecosistema anche a chi parte da zero, con parole semplici: spiegazioni e consigli per capire da dove iniziare." }
+        },
+        {
+          "@type": "Question",
+          "name": "I consigli valgono anche con un budget contenuto?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sì. Con criterio non significa costoso: significa scegliere il prodotto giusto per la propria esigenza. A volte il consiglio migliore è spendere meno, ma bene." }
+        },
+        {
+          "@type": "Question",
+          "name": "I link ai prodotti hanno un costo per me?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Quando un link è affiliato, il prezzo per te resta identico; una piccola commissione può sostenere lo studio, senza costi aggiuntivi." }
         }
       ]
     }
@@ -943,6 +964,27 @@
     </div>
   </section>
 
+  <!-- GLOSSARIO -->
+  <section id="glossario" aria-label="Glossario smart home">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">Glossario</div>
+        <h2 class="section-title">Le parole della smart home, spiegate semplici.</h2>
+        <p class="section-lead">I termini che senti più spesso, senza tecnicismi. Giusto quello che serve capire.</p>
+      </div>
+      <div class="gloss-grid">
+        <div class="gloss reveal"><h3>HomeKit</h3><p>Il sistema di Apple per la casa intelligente. Fa dialogare i dispositivi compatibili e li gestisci dall'app Casa o con Siri.</p></div>
+        <div class="gloss reveal"><h3>Matter</h3><p>Lo standard comune che permette a prodotti di marche diverse di parlarsi tra loro. Meno incompatibilità, più libertà di scelta.</p></div>
+        <div class="gloss reveal"><h3>Thread</h3><p>Una rete a basso consumo che collega i dispositivi smart tra loro in modo stabile e veloce, senza passare sempre dal Wi-Fi.</p></div>
+        <div class="gloss reveal"><h3>Hub (o Bridge)</h3><p>Il "traduttore" che collega alcuni accessori all'ecosistema. In casa Apple spesso è un HomePod o una Apple TV.</p></div>
+        <div class="gloss reveal"><h3>Automazione</h3><p>Un'azione che avviene da sola quando succede qualcosa: "quando esco, spegni tutto", "al tramonto, accendi le luci".</p></div>
+        <div class="gloss reveal"><h3>Scena</h3><p>Un insieme di regolazioni attivabili con un tocco. Es. "Buonanotte": luci soffuse, porta chiusa, temperatura giusta.</p></div>
+        <div class="gloss reveal"><h3>Accessorio compatibile</h3><p>Un prodotto pensato per Apple: lo riconosci dalla dicitura "Funziona con HomeKit" o "Apple Home".</p></div>
+        <div class="gloss reveal"><h3>Siri</h3><p>L'assistente vocale di Apple: comanda luci, scene e automazioni a voce, da iPhone, HomePod o Apple Watch.</p></div>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section id="faq" aria-label="Domande frequenti">
     <div class="wrap">
@@ -970,6 +1012,18 @@
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Come iniziare una collaborazione?<span class="faq-icon" aria-hidden="true"></span></button>
           <div class="faq-a"><div class="faq-a-inner">Basta una mail a infoecosystemstudio@gmail.com con una breve descrizione del prodotto e dell'idea. Si valuta insieme se c'è affinità, senza alcun impegno iniziale. La risposta arriva in fretta.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Devo già avere prodotti Apple per seguirvi?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. Raccontiamo l'ecosistema anche a chi parte da zero, con parole semplici: trovi spiegazioni e consigli per capire da dove iniziare, senza dare nulla per scontato.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">I consigli valgono anche con un budget contenuto?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">Sì. "Con criterio" non significa "costoso": significa scegliere il prodotto giusto per la propria esigenza. A volte il consiglio migliore è spendere meno, ma bene.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">I link ai prodotti hanno un costo per me?<span class="faq-icon" aria-hidden="true"></span></button>
+          <div class="faq-a"><div class="faq-a-inner">No. Quando un link è affiliato, per te il prezzo resta identico; una piccola commissione può sostenere lo studio, senza alcun costo aggiuntivo. Consigliamo solo ciò che useremmo davvero.</div></div>
         </div>
       </div>
     </div>
