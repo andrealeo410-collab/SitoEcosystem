@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>EcosystemStudio — Cattura immagine anteprima (OG)</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;background:#6E6E73;min-height:100vh;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px}
+  .hint{color:#fff;font-size:13px;text-align:center;opacity:.9;max-width:340px;line-height:1.45}
+  .hint b{font-weight:600}
+  /* CARD OG — proporzione 1200x630, ritaglia lungo il suo bordo */
+  .card{container-type:inline-size;position:relative;width:min(94vw,900px);aspect-ratio:1200/630;
+    background:#FBFBFD;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.3)}
+  .card .bg{position:absolute;inset:0;background:radial-gradient(ellipse 75% 70% at 50% 42%, #ffffff 0%, #F1F3F6 100%)}
+  .card .frame{position:absolute;inset:2.2cqw;border:0.09cqw solid rgba(0,0,0,0.07);border-radius:2.4cqw}
+  .card .wm{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    white-space:nowrap;line-height:1;font-size:10.6cqw;letter-spacing:0.25cqw}
+  .card .eco{font-weight:300;color:#1D1D1F}
+  .card .dot{font-weight:700;color:#0071E3;padding:0 .05em}
+  .card .stu{font-weight:600;color:#0071E3}
+</style>
+</head>
+<body>
+  <div class="hint">📸 Fai uno <b>screenshot</b>, poi in Foto <b>ritaglia lungo il bordo</b> della card qui sotto (il rettangolo chiaro).</div>
+  <div class="card">
+    <div class="bg"></div>
+    <div class="frame"></div>
+    <div class="wm"><span class="eco">Ecosystem</span><span class="dot">·</span><span class="stu">Studio</span></div>
+  </div>
+  <div class="hint">Il resto (sfondo grigio e questi testi) sparisce con il ritaglio.</div>
+</body>
+</html>
