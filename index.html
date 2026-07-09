@@ -349,10 +349,27 @@
   .menu-nav a {
     font-size: clamp(26px, 7vw, 34px); font-weight: 600; letter-spacing: -0.02em;
     color: var(--text); text-decoration: none; padding: 14px 0;
-    border-bottom: 0.5px solid var(--border); transition: color 0.2s ease, padding-left 0.25s ease;
+    border-bottom: 0.5px solid var(--border); opacity: 0;
+    transition: color 0.2s ease, padding-left 0.25s ease;
   }
   .menu-nav a:last-child { border-bottom: none; }
   .menu-nav a:hover, .menu-nav a:active { color: var(--accent); padding-left: 6px; }
+  .menu-overlay.open .menu-nav a { animation: menuItemIn 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .menu-overlay.open .menu-nav a:nth-child(1) { animation-delay: 0.05s; }
+  .menu-overlay.open .menu-nav a:nth-child(2) { animation-delay: 0.10s; }
+  .menu-overlay.open .menu-nav a:nth-child(3) { animation-delay: 0.15s; }
+  .menu-overlay.open .menu-nav a:nth-child(4) { animation-delay: 0.20s; }
+  .menu-overlay.open .menu-nav a:nth-child(5) { animation-delay: 0.25s; }
+  .menu-overlay.open .menu-nav a:nth-child(6) { animation-delay: 0.30s; }
+  .menu-overlay.open .menu-nav a:nth-child(7) { animation-delay: 0.35s; }
+  .menu-overlay.open .menu-nav a:nth-child(8) { animation-delay: 0.40s; }
+  @keyframes menuItemIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ENTRATA ALL'APERTURA (hero) */
+  .hero-content h1 { animation: heroIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+  .hero-content .tagline { animation: heroIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both; }
+  .hero .scroll-hint { animation: heroIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both; }
+  @keyframes heroIn { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: translateY(0); } }
 
   /* le sezioni non finiscono sotto la barra fissa quando si salta con il menu */
   html { scroll-behavior: smooth; }
@@ -361,7 +378,17 @@
   /* SITO CORTO: sezioni dopo il manifesto, una alla volta */
   .section-panels { scroll-margin-top: 56px; }
   .section-panel { display: none; }
-  .section-panel.active { display: block; }
+  .section-panel.active { display: block; animation: panelIn 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  @keyframes panelIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* cascata delle card quando compaiono */
+  .topics-grid > .reveal:nth-child(2), .gloss-grid > .reveal:nth-child(2), .pillars > .reveal:nth-child(2), .steps > .reveal:nth-child(2), .works-grid > .reveal:nth-child(2), .channels-grid > .reveal:nth-child(2) { transition-delay: 0.09s; }
+  .topics-grid > .reveal:nth-child(3), .gloss-grid > .reveal:nth-child(3), .pillars > .reveal:nth-child(3), .steps > .reveal:nth-child(3), .works-grid > .reveal:nth-child(3), .channels-grid > .reveal:nth-child(3) { transition-delay: 0.18s; }
+  .gloss-grid > .reveal:nth-child(4), .steps > .reveal:nth-child(4), .channels-grid > .reveal:nth-child(4) { transition-delay: 0.27s; }
+  .gloss-grid > .reveal:nth-child(5), .channels-grid > .reveal:nth-child(5) { transition-delay: 0.36s; }
+  .gloss-grid > .reveal:nth-child(6), .channels-grid > .reveal:nth-child(6) { transition-delay: 0.45s; }
+  .gloss-grid > .reveal:nth-child(7) { transition-delay: 0.54s; }
+  .gloss-grid > .reveal:nth-child(8) { transition-delay: 0.63s; }
 
 
   /* ─── IMAGE SHOWCASE (ready for real photos) ─── */
@@ -1112,7 +1139,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="footer-closing reveal">Costruito con criterio.<br><span>Un pezzo alla volta.</span></div>
+    <div class="footer-closing reveal">La tecnologia che trova<br><span style="color:var(--accent)">il suo posto.</span></div>
     <div class="footer-brand"><span class="wm-eco">Ecosystem</span><span class="wm-dot" aria-hidden="true">·</span><span class="wm-stu">Studio</span></div>
     <div class="footer-tag">Apple e Smart home, con criterio.</div>
     <div class="footer-mini-channels">
