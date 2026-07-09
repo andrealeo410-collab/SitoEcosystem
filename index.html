@@ -318,6 +318,25 @@
   #toTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
   #toTop:hover { border-color: var(--accent); color: var(--accent); }
 
+  /* MENU A SCHEDE (sezioni scambiabili) */
+  .tabs-wrap { margin: 8px 0; }
+  .tabs-bar {
+    display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; max-width: var(--max); margin: 0 auto; padding: 16px 24px;
+  }
+  .tabs-bar::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex: 0 0 auto; white-space: nowrap; cursor: pointer; font-family: inherit;
+    font-size: 15px; font-weight: 500; letter-spacing: -0.01em;
+    padding: 9px 18px; border-radius: 980px; border: 0.5px solid var(--border);
+    background: var(--surface); color: var(--text-sec);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
   /* ─── IMAGE SHOWCASE (ready for real photos) ─── */
   .showcase-img {
     position: relative; width: 100%; border-radius: 24px; overflow: hidden;
@@ -1259,6 +1278,74 @@
     btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
     onScroll();
   }
+})();
+</script>
+
+<!-- Menu a schede: da "Cosa trovi" in giù, con Cosa trovi e Chi c'è dietro sempre visibili -->
+<script>
+(function () {
+  var TABS = [
+    { id: 'ecosistema', label: 'Ecosistema' },
+    { id: 'brand',      label: 'Per i brand' },
+    { id: 'glossario',  label: 'Glossario' },
+    { id: 'faq',        label: 'FAQ' },
+    { id: 'canali',     label: 'Canali' }
+  ];
+  var temi = document.getElementById('temi');       // Cosa trovi (resta visibile)
+  var chi  = document.getElementById('chi-sono');   // Chi c'è dietro (resta visibile)
+  if (!temi) return;
+
+  // 1) "Chi c'è dietro" subito dopo "Cosa trovi"
+  if (chi) { temi.parentNode.insertBefore(chi, temi.nextSibling); }
+
+  // 2) Raccogli le sezioni da mettere a schede
+  var sections = [];
+  TABS.forEach(function (t) {
+    var s = document.getElementById(t.id);
+    if (s) { s._tabLabel = t.label; sections.push(s); }
+  });
+  if (!sections.length) return;
+
+  // 3) Costruisci barra + pannelli
+  var wrap = document.createElement('div'); wrap.className = 'tabs-wrap';
+  var bar = document.createElement('div'); bar.className = 'tabs-bar'; bar.setAttribute('role', 'tablist');
+  var panels = document.createElement('div'); panels.className = 'tabs-panels';
+  sections.forEach(function (s, i) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'tab-btn' + (i === 0 ? ' active' : '');
+    btn.textContent = s._tabLabel;
+    btn.setAttribute('data-target', s.id);
+    bar.appendChild(btn);
+    s.classList.add('tab-panel');
+    if (i === 0) s.classList.add('active');
+    s.style.removeProperty('display');
+    panels.appendChild(s);
+  });
+  wrap.appendChild(bar);
+  wrap.appendChild(panels);
+
+  // 4) Inserisci il blocco schede dopo "Chi c'è dietro" (o "Cosa trovi")
+  var anchor = chi || temi;
+  anchor.parentNode.insertBefore(wrap, anchor.nextSibling);
+
+  function showPanel(s) {
+    s.querySelectorAll('.reveal').forEach(function (r) { r.classList.add('in'); });
+  }
+  showPanel(sections[0]);
+
+  // 5) Cambio scheda
+  bar.addEventListener('click', function (e) {
+    var b = e.target.closest('.tab-btn'); if (!b) return;
+    var id = b.getAttribute('data-target');
+    var target = document.getElementById(id); if (!target) return;
+    bar.querySelectorAll('.tab-btn').forEach(function (x) { x.classList.remove('active'); });
+    b.classList.add('active');
+    panels.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+    target.classList.add('active');
+    showPanel(target);
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 })();
 </script>
 </body>
