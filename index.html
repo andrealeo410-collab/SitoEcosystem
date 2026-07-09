@@ -358,6 +358,11 @@
   html { scroll-behavior: smooth; }
   main > section, .manifesto, #top { scroll-margin-top: 64px; }
 
+  /* SITO CORTO: sezioni dopo il manifesto, una alla volta */
+  .section-panels { scroll-margin-top: 56px; }
+  .section-panel { display: none; }
+  .section-panel.active { display: block; }
+
 
   /* ─── IMAGE SHOWCASE (ready for real photos) ─── */
   .showcase-img {
@@ -1347,6 +1352,48 @@
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && overlay.classList.contains('open')) closeMenu();
+  });
+})();
+</script>
+
+<!-- Sito corto: dopo il manifesto una sola sezione alla volta, scelta dal menu -->
+<script>
+(function () {
+  var manifesto = document.querySelector('.manifesto');
+  if (!manifesto) return;
+  var IDS = ['temi', 'chi-sono', 'ecosistema', 'brand', 'glossario', 'faq', 'canali'];
+  var panels = document.createElement('div');
+  panels.className = 'section-panels';
+  var found = [];
+  IDS.forEach(function (id) {
+    var s = document.getElementById(id);
+    if (s) { s.classList.add('section-panel'); panels.appendChild(s); found.push(id); }
+  });
+  if (!found.length) return;
+  manifesto.parentNode.insertBefore(panels, manifesto.nextSibling);
+
+  function revealIn(el) { el.querySelectorAll('.reveal').forEach(function (r) { r.classList.add('in'); }); }
+  function showSection(id) {
+    var target = document.getElementById(id);
+    if (!target) return;
+    panels.querySelectorAll('.section-panel').forEach(function (p) { p.classList.remove('active'); });
+    target.classList.add('active');
+    revealIn(target);
+  }
+  showSection(found[0]); // di default: "Cosa trovi"
+
+  document.querySelectorAll('.menu-nav a').forEach(function (a) {
+    var href = a.getAttribute('href') || '';
+    if (href.charAt(0) === '#') {
+      var id = href.slice(1);
+      if (found.indexOf(id) !== -1) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          showSection(id);
+          setTimeout(function () { panels.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
+        });
+      }
+    }
   });
 })();
 </script>
