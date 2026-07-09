@@ -303,6 +303,21 @@
   .gloss h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: var(--accent); margin-bottom: 8px; }
   .gloss p { font-size: 15px; color: var(--text-sec); line-height: 1.55; }
 
+  /* NUMERI ANIMATI */
+  .num { font-variant-numeric: tabular-nums; }
+
+  /* TORNA SU */
+  #toTop {
+    position: fixed; right: 20px; bottom: 20px; z-index: 90;
+    width: 44px; height: 44px; border-radius: 50%; border: 0.5px solid var(--border);
+    background: var(--surface); color: var(--text); font-size: 20px; line-height: 1; cursor: pointer;
+    box-shadow: var(--shadow-lg); opacity: 0; visibility: hidden; transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, border-color 0.2s ease, color 0.2s ease;
+    display: flex; align-items: center; justify-content: center;
+  }
+  #toTop.show { opacity: 1; visibility: visible; transform: translateY(0); }
+  #toTop:hover { border-color: var(--accent); color: var(--accent); }
+
   /* ─── IMAGE SHOWCASE (ready for real photos) ─── */
   .showcase-img {
     position: relative; width: 100%; border-radius: 24px; overflow: hidden;
@@ -702,7 +717,7 @@
       <div class="iphone-showcase reveal">
         <div class="iphone-showcase-head">
           <h3>📱 Ogni iPhone, dal primo a oggi</h3>
-          <span class="iphone-count">22 modelli</span>
+          <span class="iphone-count"><span class="num" data-to="22">22</span> modelli</span>
         </div>
         <p class="sub">Dall'iPhone 3G del 2008 al 17 Pro. Diciassette anni di evoluzione, tenuti in mano uno per uno.</p>
         <div class="iphone-flow">
@@ -771,7 +786,7 @@
         </div>
       </div>
 
-      <div class="eco-total reveal">Oltre <strong>77 dispositivi</strong> in 7 brand — un ecosistema completo, provato sul campo.</div>
+      <div class="eco-total reveal">Oltre <strong><span class="num" data-to="77">77</span> dispositivi</strong> in <span class="num" data-to="7">7</span> brand — un ecosistema completo, provato sul campo.</div>
 
       <!-- Spazio per foto reale della collezione -->
       <div class="feature-img reveal">
@@ -1199,6 +1214,52 @@
       else { if (typeof drawEco === 'function') { try { drawEco(); } catch(err){} } }
     });
   } catch(e) { /* optional optimisation */ }
+</script>
+
+<!-- Torna su -->
+<button id="toTop" aria-label="Torna su" title="Torna su">↑</button>
+
+<!-- Rifiniture: numeri animati + torna su -->
+<script>
+(function () {
+  // Numeri animati (contano fino al valore quando entrano in vista)
+  var nums = document.querySelectorAll('.num[data-to]');
+  function animateNum(el) {
+    var to = parseInt(el.getAttribute('data-to'), 10) || 0;
+    var dur = 1100, start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var e = 1 - Math.pow(1 - p, 3); // easeOutCubic
+      el.textContent = Math.round(e * to);
+      if (p < 1) requestAnimationFrame(step); else el.textContent = to;
+    }
+    requestAnimationFrame(step);
+  }
+  if (nums.length) {
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { animateNum(en.target); obs.unobserve(en.target); }
+        });
+      }, { threshold: 0.6 });
+      nums.forEach(function (n) { obs.observe(n); });
+    } else {
+      nums.forEach(animateNum);
+    }
+  }
+
+  // Pulsante "torna su"
+  var btn = document.getElementById('toTop');
+  if (btn) {
+    function onScroll() {
+      if (window.scrollY > 600) btn.classList.add('show'); else btn.classList.remove('show');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    onScroll();
+  }
+})();
 </script>
 </body>
 </html>
