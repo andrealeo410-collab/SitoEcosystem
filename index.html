@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
 <!-- ─── SEO ─── -->
-<title>EcosystemStudio — Apple e Smart home, con criterio</title>
+<title>EcosystemStudio — Apple e Smart home, con cura</title>
 <meta name="description" content="Uno studio dedicato all'ecosistema Apple e alla smart home. Selezione, non accumulo. Chiarezza, non rumore. Recensioni e contenuti curati nel dettaglio." />
 <meta name="keywords" content="Apple, smart home, HomeKit, ecosistema, recensioni tech, iPhone, domotica, creator tech" />
 <meta name="author" content="EcosystemStudio" />
@@ -15,7 +15,7 @@
 
 <!-- ─── Open Graph (anteprima quando condividi il link) ─── -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="EcosystemStudio — Apple e Smart home, con criterio" />
+<meta property="og:title" content="EcosystemStudio — Apple e Smart home, con cura" />
 <meta property="og:description" content="Uno studio dedicato all'ecosistema Apple e alla smart home. Selezione, non accumulo. Chiarezza, non rumore." />
 <meta property="og:site_name" content="EcosystemStudio" />
 <meta property="og:locale" content="it_IT" />
@@ -25,11 +25,11 @@
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Ecosystem · Studio — Apple e Smart home, con criterio" />
+<meta property="og:image:alt" content="Ecosystem · Studio — Apple e Smart home, con cura" />
 
 <!-- ─── Twitter/X Card ─── -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="EcosystemStudio — Apple e Smart home, con criterio" />
+<meta name="twitter:title" content="EcosystemStudio — Apple e Smart home, con cura" />
 <meta name="twitter:description" content="Uno studio dedicato all'ecosistema Apple e alla smart home." />
 <meta name="twitter:image" content="https://sito-ecosystem.vercel.app/og.png" />
 <meta name="twitter:image:alt" content="Ecosystem · Studio" />
@@ -368,7 +368,8 @@
   /* ENTRATA ALL'APERTURA (hero) */
   .hero-content h1 { animation: heroIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both; }
   .hero-content .tagline { animation: heroIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both; }
-  .hero .scroll-hint { animation: heroIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both; }
+  .hero .scroll-hint { animation: scrollHintIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both; }
+  @keyframes scrollHintIn { from { opacity: 0; transform: translateX(-50%) translateY(22px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
   @keyframes heroIn { from { opacity: 0; transform: translateY(46px) scale(0.96); filter: blur(6px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
 
   /* BARRA DI AVANZAMENTO SCORRIMENTO */
@@ -396,6 +397,23 @@
   .gloss-grid > .reveal:nth-child(6), .channels-grid > .reveal:nth-child(6) { transition-delay: 0.45s; }
   .gloss-grid > .reveal:nth-child(7) { transition-delay: 0.54s; }
   .gloss-grid > .reveal:nth-child(8) { transition-delay: 0.63s; }
+
+  /* NEWS / ARTICOLI */
+  .news-list { max-width: 760px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 14px; }
+  .news-item { border: 0.5px solid var(--border); border-radius: 18px; background: var(--surface); overflow: hidden; transition: border-color 0.2s ease; }
+  .news-item[open] { border-color: var(--accent); }
+  .news-head {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; cursor: pointer;
+    padding: 20px 22px; list-style: none; -webkit-tap-highlight-color: transparent;
+  }
+  .news-head::-webkit-details-marker { display: none; }
+  .news-title { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); flex: 1 1 60%; }
+  .news-date { font-size: 13px; font-weight: 500; color: var(--text-ter); white-space: nowrap; }
+  .news-item[open] .news-title { color: var(--accent); }
+  .news-body {
+    padding: 4px 22px 24px; font-size: 15.5px; line-height: 1.7; color: var(--text-sec);
+    white-space: pre-line;
+  }
 
 
   /* ─── IMAGE SHOWCASE (ready for real photos) ─── */
@@ -620,7 +638,7 @@
       "name": "EcosystemStudio",
       "description": "Uno studio dedicato all'ecosistema Apple e alla smart home. Recensioni e contenuti curati nel dettaglio, per un pubblico che cerca consigli affidabili.",
       "url": "https://sito-ecosystem.vercel.app/",
-      "slogan": "Apple e Smart home, con criterio",
+      "slogan": "Apple e Smart home, con cura",
       "knowsAbout": ["Apple", "Smart Home", "HomeKit", "Domotica", "iPhone", "Recensioni Tech", "Ecosistema Apple"],
       "areaServed": "IT",
       "email": "infoecosystemstudio@gmail.com"
@@ -630,7 +648,7 @@
       "@id": "https://sito-ecosystem.vercel.app/#website",
       "url": "https://sito-ecosystem.vercel.app/",
       "name": "EcosystemStudio",
-      "description": "Apple e Smart home, con criterio",
+      "description": "Apple e Smart home, con cura",
       "publisher": { "@id": "https://sito-ecosystem.vercel.app/#organization" },
       "inLanguage": "it-IT"
     },
@@ -638,7 +656,7 @@
       "@type": "ProfilePage",
       "@id": "https://sito-ecosystem.vercel.app/#profilepage",
       "url": "https://sito-ecosystem.vercel.app/",
-      "name": "EcosystemStudio — Apple e Smart home, con criterio",
+      "name": "EcosystemStudio — Apple e Smart home, con cura",
       "about": { "@id": "https://sito-ecosystem.vercel.app/#organization" },
       "inLanguage": "it-IT"
     },
@@ -674,7 +692,7 @@
         {
           "@type": "Question",
           "name": "I consigli valgono anche con un budget contenuto?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sì. Con criterio non significa costoso: significa scegliere il prodotto giusto per la propria esigenza. A volte il consiglio migliore è spendere meno, ma bene." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Sì. Scegliere bene non significa spendere tanto: significa trovare il prodotto giusto per la propria esigenza. A volte il consiglio migliore è spendere meno, ma bene." }
         },
         {
           "@type": "Question",
@@ -710,6 +728,7 @@
 <div class="menu-overlay" id="menuOverlay" aria-hidden="true">
   <nav class="menu-nav" aria-label="Menu di navigazione">
     <a href="#temi">Cosa trovi</a>
+    <a href="#news">News</a>
     <a href="#chi-sono">Chi c'è dietro</a>
     <a href="#ecosistema">Ecosistema</a>
     <a href="#brand">Per i brand</a>
@@ -726,7 +745,7 @@
   <header class="hero">
     <canvas class="hero-canvas" id="ecoCanvas"></canvas>
     <div class="hero-content">
-      <h1>Apple e Smart home,<br><span class="accent">con criterio.</span></h1>
+      <h1>Apple e Smart home,<br><span class="accent">con cura.</span></h1>
       <p class="tagline">Uno studio dedicato all'ecosistema. Selezione, non accumulo. Chiarezza, non rumore.</p>
     </div>
     <a href="#studio" class="scroll-hint">
@@ -912,9 +931,9 @@
         <div class="about-body reveal">
           <p>Ricordo ancora la presentazione del primo iPhone. Da quel giorno non ho più saltato un keynote — e uno alla volta ho messo insieme una collezione di <strong>oltre 20 iPhone, dal 3G al 17 Pro</strong>. Nuovi, usati, ricondizionati: la storia intera dell'iPhone, tenuta in mano.</p>
           <p>Ma non è mai stata una questione di oggetti. Quello che mi ha conquistato è come la tecnologia, quando è pensata bene, <strong>sparisce</strong>: smette di essere un gadget e diventa parte della vita.</p>
-          <p>Lo vedo anche per lavoro. Sono <strong>terapista occupazionale</strong>: mi occupo di come un ambiente può sostenere le persone, ogni giorno. Quando ho scoperto la domotica, ho ritrovato la stessa idea tra le mura di casa — una casa che si adatta a chi la vive, non il contrario. Da lì ho costruito il mio ecosistema, scegliendo con cura ogni pezzo.</p>
-          <p>Il mio criterio è uno solo: <strong>meglio poco, ma buono</strong>. Un prodotto giusto che dura, invece di tanti che deludono.</p>
-          <p>Ed è qui che entri tu. Che tu sia un brand o una persona che non sa cosa scegliere, da me trovi la stessa cosa: consiglio solo ciò che ho scelto, pagato e usato davvero. Niente hype, niente numeri gonfiati. Già oggi amici, parenti e colleghi mi chiedono un parere — e rispondo con onestà. Questo studio nasce per mettere lo stesso criterio a disposizione di più persone.</p>
+          <p>Lo vedo anche per lavoro. Sono <strong>terapista occupazionale</strong>: un mestiere fatto di molte mansioni, ma una in particolare mi ha sempre appassionato — studiare l'ambiente per renderlo il più accessibile possibile alla persona. Ed è qui che la domotica entra in gioco: un'alternativa concreta a una casa statica e tradizionale, un ambiente che si adatta a chi lo vive, invece di costringerlo. Da questa idea ho costruito il mio ecosistema, un pezzo alla volta.</p>
+          <p>La mia regola è una sola: <strong>meglio poco, ma buono</strong>. Un prodotto giusto che dura, invece di tanti che deludono.</p>
+          <p>Ed è qui che entri tu. Che tu sia un brand o una persona che non sa cosa scegliere, da me trovi la stessa cosa: consiglio solo ciò che ho scelto, pagato e usato davvero. Niente hype, niente numeri gonfiati. Già oggi amici, parenti e colleghi mi chiedono un parere — e rispondo con onestà. Questo studio nasce per mettere la stessa attenzione a disposizione di più persone.</p>
         </div>
         <aside class="about-side reveal">
           <div class="about-mono"><span class="e">e</span><span class="s">S</span></div>
@@ -982,7 +1001,7 @@
       <div class="reveal">
         <div class="eyebrow">I canali</div>
         <h2 class="section-title">Dove trovarci.</h2>
-        <p class="section-lead">Ogni piattaforma, lo stesso criterio. Scegli quella che preferisci.</p>
+        <p class="section-lead">Ogni piattaforma, lo stesso approccio. Scegli quella che preferisci.</p>
       </div>
       <div class="channels">
         <a href="#" class="channel reveal" data-net="instagram" aria-label="Seguici su Instagram">
@@ -1031,7 +1050,7 @@
     <div class="wrap">
       <div class="reveal">
         <div class="eyebrow">Per i brand</div>
-        <h2 class="section-title">Collaborazioni con criterio.</h2>
+        <h2 class="section-title">Collaborazioni con cura.</h2>
         <p class="section-lead">Lo studio cerca brand che condividono la stessa attenzione alla qualità. Non numeri gonfiati, ma contenuti onesti e un ecosistema reale su cui provare davvero i prodotti.</p>
       </div>
 
@@ -1098,6 +1117,37 @@
     </div>
   </section>
 
+  <!-- NEWS / ARTICOLI -->
+  <section id="news" aria-label="News e articoli">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">News</div>
+        <h2 class="section-title">Gli articoli.</h2>
+        <p class="section-lead">Le notizie tech che seguo, raccontate con parole mie. Non copia-incolla: selezione e punto di vista.</p>
+      </div>
+      <div class="news-list reveal">
+
+        <!-- ═══════════════════════════════════════════════════════════════
+             COME AGGIUNGERE UN ARTICOLO:
+             1. Copia tutto il blocco <details>...</details> qui sotto.
+             2. Incollane una copia SUBITO SOTTO questo commento (così il nuovo articolo va in cima).
+             3. Cambia solo 3 cose: il TITOLO, la DATA e il TESTO (incollalo dal dashboard).
+                Il testo mantiene gli a-capo: incolla i paragrafi normalmente, uno sotto l'altro.
+             4. Quando aggiungi articoli veri, elimina pure questo blocco "in arrivo".
+        ═══════════════════════════════════════════════════════════════ -->
+
+        <details class="news-item">
+          <summary class="news-head">
+            <span class="news-title">I primi articoli arrivano presto</span>
+            <span class="news-date">2026</span>
+          </summary>
+          <div class="news-body">Sto preparando i primi pezzi: le notizie tech che seguo, raccontate con parole mie. Torna a breve.</div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section id="faq" aria-label="Domande frequenti">
     <div class="wrap">
@@ -1132,7 +1182,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">I consigli valgono anche con un budget contenuto?<span class="faq-icon" aria-hidden="true"></span></button>
-          <div class="faq-a"><div class="faq-a-inner">Sì. "Con criterio" non significa "costoso": significa scegliere il prodotto giusto per la propria esigenza. A volte il consiglio migliore è spendere meno, ma bene.</div></div>
+          <div class="faq-a"><div class="faq-a-inner">Sì. Scegliere bene non significa spendere tanto: significa trovare il prodotto giusto per la propria esigenza. A volte il consiglio migliore è spendere meno, ma bene.</div></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">I link ai prodotti hanno un costo per me?<span class="faq-icon" aria-hidden="true"></span></button>
@@ -1148,7 +1198,7 @@
   <div class="wrap">
     <div class="footer-closing reveal">La tecnologia che trova<br><span style="color:var(--accent)">il suo posto.</span></div>
     <div class="footer-brand"><span class="wm-eco">Ecosystem</span><span class="wm-dot" aria-hidden="true">·</span><span class="wm-stu">Studio</span></div>
-    <div class="footer-tag">Apple e Smart home, con criterio.</div>
+    <div class="footer-tag">Apple e Smart home, con cura.</div>
     <div class="footer-mini-channels">
       <a href="#canali">Instagram</a>
       <a href="#canali">TikTok</a>
@@ -1395,7 +1445,7 @@
 (function () {
   var manifesto = document.querySelector('.manifesto');
   if (!manifesto) return;
-  var IDS = ['temi', 'chi-sono', 'ecosistema', 'brand', 'glossario', 'faq', 'canali'];
+  var IDS = ['temi', 'news', 'chi-sono', 'ecosistema', 'brand', 'glossario', 'faq', 'canali'];
   var panels = document.createElement('div');
   panels.className = 'section-panels';
   var found = [];
